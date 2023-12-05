@@ -1,0 +1,65 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package viva.question.pkg3;
+
+/**
+ *
+ * @author WAN QISTINA DAMIA
+ */
+import java.util.Scanner;
+public class VIVAQUESTION3 {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the lower limit of the range: ");
+        int lowlimit = input.nextInt();
+
+        System.out.print("\nEnter the upper limit of the range: ");
+        int uplimit = input.nextInt();
+        System.out.println();
+
+        int[] prime = generatePrimes(lowlimit, uplimit);
+        
+        System.out.print("The prime numbers within the range [" + lowlimit + ", " + uplimit + "] are:[ ");
+        for (int primes : prime) {
+            if (primes != 0) {
+                System.out.print(primes + " ");
+            }
+        }
+        System.out.print("]");
+    }
+
+    public static boolean primeNumber(int num) {
+        if (num<=1) {
+            return false;
+        }
+
+        for (int i=2; i<=Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int[] generatePrimes(int lowlimit, int uplimit) {
+        int[] prime = new int[uplimit - lowlimit + 1];//to this result accounts for inclusive counting from the lower limit to the upper limit (inclusive)
+
+        for (int i=lowlimit; i<=uplimit; i++) {
+            if (primeNumber(i)) {
+            prime[i-lowlimit]=i;// calculates the index at which the prime number i will be stored in the prime[] array.
+            }
+        }
+        return prime;
+    }
+}
+
+    
+    
+     
+    
+   
